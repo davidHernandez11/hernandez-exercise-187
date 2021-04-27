@@ -1,0 +1,338 @@
+//AUTHOR:DavidHernandez
+//COURSE:CPT187
+//PURPOSE:The purpose of Inventory is to keep track of items and how much of each item is in stock and relay it to Order.
+//CREATEDATE:April 20, 2021
+package edu.cpt187.hernandez.exercise6;
+
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.util.Random;
+import java.util.Scanner;
+
+public class Inventory 
+{
+	//Attributes
+	
+	private String[] DISCOUNT_NAMES = {"Member", "Senior", "No Discount"};
+	private double[] DISCOUNT_RATES = {0.25, 0.15, 0.0};
+	private String[] PRIZE_NAMES = {"Milk", "Soda", "Spam"};
+	
+	
+	private int MAXIMUM_RECORDS = 50;
+	private int NOT_FOUND = -1;
+	private int ONE = 1;
+	private int RESET_VALUE = 0;
+	
+	private int[] itemIDs;
+	private String[] itemNames;
+	private double[] itemPrices;
+	private int[] orderQuantities;
+	private double[] orderTotals;
+	private int[] inStockCounts;
+	
+	private int itemSearchIndex = 0;
+	private int recordCount = 0;
+	private Random prizeGenerator;
+	
+	//End of Attributes
+	
+	//Constructor
+	
+	Inventory()
+	{
+	}//End of Constructor
+	
+	//Setters
+	
+	//Setter ReduceStock to assign value for borrowed
+	public void setReduceStock(int borrowedHowMany)
+	{
+		itemSearchIndex(inStockCounts - borrowedHowMany);
+	}//End of Setter to Assign a new value to setReducStock
+		
+	//Setter LoadItems to assign value for borrowed
+	public void setLoadItems(String borrowedFileName)
+	{
+		try
+		{
+			Scanner infile = new Scanner (new FileInputStream(borrowedFileName));
+			
+			recordCount = NOT_FOUND;
+			
+			//Beginning of While < MAX_RECORDS
+			while (infile.hasNext() == true && recordCount < MAXIMUM_RECORDS)
+			{
+				itemIDs[recordCount] = infile.nextInt();
+				
+				itemNames[recordCount] = infile.next();
+				
+				itemPrices[recordCount] = infile.nextDouble();
+				
+				inStockCounts[recordCount] = infile.nextInt();
+				
+				recordCount++;
+				
+			}//End of While < MAX_RECORDS
+			infile.close();
+		}
+		
+		catch (IOException ex)
+		{
+			recordCount = NOT_FOUND;
+		}
+	}//End of Setter to Assign a new value to setLoadItems
+	
+	//Setter LoadItems to assign value for borrowed
+	public void setLoadItems(String borrowedFileName, int borrowedSize)
+	{
+		try
+		{
+			Scanner infile = new Scanner (new FileInputStream(borrowedFileName));
+			
+			recordCount = NOT_FOUND;
+			
+			//Beginning of While < MAX_RECORDS
+			while (infile.hasNext() == true && recordCount < MAXIMUM_RECORDS)
+			{
+				itemIDs[recordCount] = infile.nextInt();
+				
+				itemNames[recordCount] = infile.next();
+				
+				itemPrices[recordCount] = infile.nextDouble();
+				
+				inStockCounts[recordCount] = infile.nextInt();
+				
+				recordCount++;
+				
+				//Test if borrowedSixe is 
+				if (borrowedSize == 0)
+				{
+					
+				}//End of Test if borrowedSize is 
+			}//End of While < MAX_RECORDS
+			infile.close();
+		}
+		
+		catch (IOException ex)
+		{
+			recordCount = NOT_FOUND;
+		}
+		
+	}//End of Setter to Assign a new value to setLoadItems
+	
+	//Setter searchOIndex to assign value for borrowed
+	public void setSearchIndex(int borrowedID)
+	{
+		itemSearchIndex = borrowedID;
+	}//End of Setter to Assign a new value to setSearchIndex
+	
+	//Setter to Assign a new value to setBubbleSort
+	public void setBubbleSort()
+	{
+		int localLast = recordCount - ONE;
+		
+		//TEst if localLast is > RESET_VALUE
+		while (localLast > RESET_VALUE)
+		{
+			
+			int localIndex = RESET_VALUE;
+			
+			boolean localSwap = false;
+			
+			//Test if localIndex is < localLast
+			if (localIndex < localLast)
+			{
+				//End of Test if > DISCOUNT_
+				while (DISCOUNT_RATES[localIndex] > DISCOUNT_RATES[localIndex + ONE])
+				{
+					setSwapArrayElements(localIndex);
+					
+					localSwap = true;
+				}//End of Test if > DISCOUNT_
+				
+				localIndex++;
+				
+				 
+				//Test if localSwap == false
+				if (localSwap == false)
+				{
+					localLast = RESET_VALUE;
+				}//Test if localSwap == false
+				
+				//Else for Test if localSwap == false
+				else 
+				{
+					localLast--;
+				}//End of Else for Test if localSwap == false
+			}
+		}//End of Test if localIndex is < localLast
+	}//End of Setter to Assign a new value to setBubbleSort
+	
+	
+	public void setSwapArrayElements(int borrowedIndex)
+	{
+		
+	}//End of Setter to Assign a new value to setSwapArrayElements
+		
+	//End of Setters
+	
+	//Getters
+	
+	//Getter to Return the value of inStockCounts
+	public int[] getInStockCounts()
+	{
+		return inStockCounts;
+	}//End of getInStockCounts
+	
+	//Getter to Return the value of itemIDs
+	public int[] getItemIDs()
+	{
+		return itemIDs;
+	}//End of getItemIDs
+	
+	//Getter to Return the value of itemNames
+	public String[] getItemNames()
+	{
+		return itemNames;
+	}//End of getItemNames
+	
+	//Getter to Return the value of ITEM_PRICES
+	public double[] getItemPrices()
+	{
+		return itemPrices;
+	}//End of getItemPrices
+	
+	//Getter to Return the value of discountNames
+	public String[] getDiscountNames()
+	{
+		return DISCOUNT_NAMES;
+	}//End of getDiscountNames
+	
+	//Getter to Return the value of discountRates
+	public double[] getDiscountRates()
+	{
+		return DISCOUNT_RATES;
+	}//End of getDiscountRates
+	
+	public int[] getOrderQuantities()
+	{
+		return orderQuantities;
+	}//End of getOrderQuantities
+	
+	//Getter to Return the value of orderTotals
+	public double[] getOrderTotals()
+	{
+		return orderTotals;
+	}//End of getOrderTotals
+	
+	//Getter to Return the value of prizeNames
+	public String[] getPrizeNames()
+	{
+		return PRIZE_NAMES;
+	}//End of getPrizeNames
+	
+	//Getter to Return the value of randomNumber
+	public int getRandomNumber()
+	{
+		return prizeGenerator.nextInt(PRIZE_NAMES.length);
+	}//End of getRandomNumber
+	
+	//Getter to Return the value of MAX_RECORDS
+	public int getMaxRecords()
+	{
+		return MAXIMUM_RECORDS;
+	}//End of getMaxRecords
+	
+	//Getter to Return the value of itemSearchIndex
+	public int getItemSearchedIndex()
+	{
+		return itemSearchIndex;
+	}//End of getItemSearchIndex
+	
+	//Getter to Return the value of recordCount
+	public int getRecordCount()
+	{
+		return recordCount;
+	}//End of getRecordCount
+
+	//Getter to Return the value of grandTotal
+	public double getGrandTotal()
+	{
+		int localIndex = 0;
+				
+		double localGrandTotal = 0;
+		
+		//Test if localIndex is 0
+		if (localIndex == 0)
+		{
+			localGrandTotal = orderTotals[0];
+		}//End of Test if localIndex is 0
+		
+		//Test if localIndex is 1
+		if (localIndex == 1)
+		{
+			localGrandTotal = orderTotals[1];
+		}//End of Test if localIndex is 1
+		
+		//Test if localIndex is 2
+		if (localIndex == 2)
+		{
+			localGrandTotal = orderTotals[2];
+		}//End of Test if localIndex is 2
+		
+		return localGrandTotal;
+	}//End of getGrandTotal
+	
+	
+	//Getter to Return the value of searchResults
+	public int getSearchResults(int borrowedBorrowedID)
+	{
+		int localLast = recordCount - ONE;
+		
+		int localFirst = 0;
+		
+		int localMid = 0;
+		
+		int TWO = 2;
+		
+		boolean localFound = false;
+		
+		//Beginning of While <= for localFist and localFound
+		while (localFirst <= localLast && localFound == false)
+			{
+				localMid = (localFirst + localLast) / TWO;
+				
+				//Test if DISCOUNTNAMES is borrowedBorrowedID
+				if (DISCOUNT_NAMES[localMid] == String.valueOf(borrowedBorrowedID))
+				{
+					localFound = false;
+				}//End of Test if DISCOUNTNAMES is borrowedBorrowedID
+				
+				//Else for Test if DISCOUNTNAMES is borrowedBorrowedID
+				else
+				{
+					//Test if DISCOUNTNAMES is < borrowedBorrowedID
+					if (DISCOUNT_NAMES[localMid] == String.valueOf(borrowedBorrowedID))
+					{
+						localFirst = localMid + ONE;
+					}//End of Test if DISCOUNTNAMES is < borrowedBorrowedID
+					
+					//Else for Test if DISCOUNTNAMES is borrowedBorrowedID
+					else 
+					{
+						localLast = localMid - ONE;
+					}//End of Else for Test if DISCOUNTNAMES is borrowedBorrowedID
+				}//End of Else for Test if DISCOUNTNAMES is borrowedBorrowedID
+			}//End of While <= for localFist and localFound
+		
+		//Test if localFound == false
+		if (localFound == false)
+		{
+			localMid = NOT_FOUND;
+		}//End of Test if localFound == false
+		
+		return localMid;
+	}//End of getSearchResults
+	
+	//End of Getters
+}//End of Class Inventory
