@@ -1,0 +1,282 @@
+//AUTHOR:DavidHernandez
+//COURSE:CPT187
+//PURPOSE:The purpose of Order is to select what item etc. is selected by its respected choice that is inputed and relay it to Account Manager
+//CREATEDATE:April 20, 2021
+package edu.cpt187.hernandez.exercise6;
+
+
+public class Order 
+{
+	//Beginning of Attributes
+	
+	private double TAX_RATE = .075;
+	
+	private int discountType;
+	
+	private int itemID;
+	private String itemName;
+	private double itemPrice;
+	
+	private String discountName;
+	private double discountRate;
+	
+	private int howMany;
+	private int lastItemSelectedIndex;
+	private String prizeName;
+	
+	//End of Attributes
+	
+	//Constructor
+	Order()
+	{
+	}//End of Constructor
+	
+	//Setters
+	
+	//Setter LastItemSelectedIndex to assign value for borrowed
+	public void setLastItemSelectedIndex(int borrowedSearchIndex)
+	{
+		lastItemSelectedIndex = borrowedSearchIndex - 'A';
+	}//End of Setter to Assign a new value to lastItemSelectedIndex
+	
+	//Beginning of setItemIDs
+	public void setItemID(int[] borrowedItemIDs)
+	{
+		//Selection Structure for Item Price 
+		
+		//Test if LastItemSelection is A
+		if (lastItemSelectedIndex == 0)
+		{
+			itemPrice = borrowedItemIDs[0];
+		}//End of Test if LastItemSelection is A
+								
+		//Test if LastItemSelection is B
+		if (lastItemSelectedIndex == 1)
+		{
+			itemPrice = borrowedItemIDs[1];
+		}//End of Test if LastItemSelection is B
+								
+		//Test if LastItemSelection is C
+		if (lastItemSelectedIndex == 2)
+		{
+			itemPrice = borrowedItemIDs[2];
+		}//End of Test If LastItemSelection is C
+								
+		//Test if LastItemSelection is D
+		if (lastItemSelectedIndex == 3)
+		{
+			itemPrice = borrowedItemIDs[3];
+		}//End of Test if LastItemSelections is D
+	}//End of setItemIDs
+	
+	//Setter ItemName to assign value for borrowed
+	public void setItemName(String[] borrowedItemNames)
+	{			
+			itemName = String.valueOf(lastItemSelectedIndex);			
+	}//End of Setter to Assign a new value to itemName
+	
+	//Setter ItemPrice to assign value for borrowed
+	public void setItemPrice(double[] borrowedItemPrices)
+	{
+		//Selection Structure for Item Price 
+		
+		//Test if itemSelection is A
+		if (lastItemSelectedIndex == 0)
+		{
+			itemPrice = borrowedItemPrices[0];
+		}//End of Test if itemSelection is A
+						
+		//Test if itemSelection is B
+		if (lastItemSelectedIndex == 1)
+		{
+			itemPrice = borrowedItemPrices[1];
+		}//End of Test if itemSelection is B
+						
+		//Test if itemSelection is C
+		if (lastItemSelectedIndex == 2)
+		{
+			itemPrice = borrowedItemPrices[2];
+		}//End of Test If itemSelection is C
+						
+		//Test if itemSelection is D
+		if (lastItemSelectedIndex == 3)
+		{
+			itemPrice = borrowedItemPrices[3];
+		}//End of Test if itemSelections is D
+						
+		//End of Item Price selections structure
+	}//End of Setter to Assign a new value to itemPrice
+	
+	//Setter HowMany to assign value for borrowed
+	public void setHowMany(String borrowedHowMany)
+	{
+		Integer.parseInt(borrowedHowMany);
+	}//End of Setter to Assign a new value to howMany
+	
+	//Setter DiscountType to assign value for borrowed
+	public void setDiscountType(char borrowedMenuSelection)
+	{
+		discountType = borrowedMenuSelection;
+	}//End of Setter to Assign a new value to discountType
+	
+	
+	//Setter DiscountName to assign value for borrowed
+	public void setDiscountName(String[] borrowedDiscountNames)
+	{
+		//Beginning of selection Structure for discountType 
+		
+			//Test if dicountType is A
+			if (discountType == 'A')
+			{
+				discountName = borrowedDiscountNames[0];
+			}//End of Test if discountType is A
+						
+			//Test if discountType is B
+			if (discountType == 'B')
+			{
+				discountName = borrowedDiscountNames[1];
+			}//End of Test if discountType is B
+						
+			//Test if discountType is C
+			if (discountType == 'C')
+			{
+				discountName = borrowedDiscountNames[2];
+			}//End of Test if discountType is C
+			
+	}//End of Setter to Assign a new value to discountName
+	
+	//Setter DiscountRate to assign value for borrowed
+	public void setDiscountRate(double[] borrowedDiscountRates)
+	{
+		//Beginning of selection Structure for discountType 
+		
+		//Test if dicountType is A
+		if (discountType == 'A')
+		{
+			discountRate = borrowedDiscountRates[0];
+		}//End of Test if discountType is A
+				
+		//Test if discountType is B
+		if (discountType == 'B')
+		{
+			discountRate = borrowedDiscountRates[1];
+		}//End of Test if discountType is B
+				
+		//Test if discountType is C
+		if (discountType == 'C')
+		{
+			discountRate = borrowedDiscountRates[2];
+		}//End of Test if discountType is C 
+				
+		//End of Selection Structure for discountType
+				
+	}//End of Setter to Assign a new value to discountRate
+	
+	//Setter PrizeName to assign value for borrowed
+	public void setPrizeName(String[] borrowedPrizeNames, int borrowedPrizeIndex)
+	{
+		//Test if prizeCounts is Empty
+		if (borrowedPrizeIndex == 0)
+		{
+			borrowedPrizeIndex = borrowedPrizeNames.length;
+		}//End of Test if prizeCounts is Empty
+		prizeName = String.valueOf(borrowedPrizeIndex);
+			
+		borrowedPrizeIndex = borrowedPrizeIndex;
+	}//End of Setter to Assign a new value to prizeName
+	
+	//Setter DecreaseInStock to assign value for borrowed
+	public void setDecreaseInStock(Inventory borrowedInventoryObject)
+	{
+		borrowedInventoryObject.setReduceStock(discountType);
+	}//End of Setter to Assign a new value to decreaseInStock
+		
+	//End of Setters
+	
+	//Getters
+	
+	public int getInStockCount(int[] borrowedInStockCounts)
+	{
+		return lastItemSelectedIndex = borrowedInStockCounts;
+	}
+	
+	//Getter to Return the value of itemID
+	public int getItemID()
+	{
+		return itemID;
+	}//End of getItemID
+	
+	//Getter to Return the value of itemName
+	public String getItemName()
+	{
+		return itemName;
+	}//End of getItemName
+		
+	//Getter to Return the value of itemPrice
+	public double getItemPrice()
+	{
+		return itemPrice;
+	}//End of getItemPrice
+		
+	//Getter to Return the value of howMany
+	public int getHowMany()
+	{
+		return howMany;
+	}//End of getHowMany
+	
+	//Getter to Return the value of discountName
+	public String getDiscountName()
+	{
+		return discountName;
+	}//End of getDiscountName
+		
+	//Getter to Return the value of discountRate
+	public double getDiscountRate()
+	{
+		return discountRate;
+	}//End of getDiscountRate
+	
+	//Getter to Return the value of discountAmt
+	public double getDiscountAmt()
+	{
+		return (itemPrice * discountRate);
+	}//End of getDiscountAmt
+		
+	//Getter to Return the value of discountPrice
+	public double getDiscountPrice()
+	{
+		return (itemPrice - getDiscountAmt());
+	}//End of getDiscountPrice
+	
+	//Getter to Return the value of prizeName
+	public String getPrizeName()
+	{
+		return prizeName;
+	}//End of getPrizeName
+		
+	//Getter to Return the value of subTotal
+	public double getSubTotal()
+	{
+		return (howMany * getDiscountPrice());
+	}//End of getSubTotal
+		
+	//Getter to Return the value of taxRate
+	public double getTaxRate()
+	{
+		return TAX_RATE;
+	}//End of getTaxRate
+		
+	//Getter to Return the value of taxAmt
+	public double getTaxAmt()
+	{
+		return (getSubTotal() * getTaxRate());
+	}//End of getTaxAmt
+		
+	//Getter to Return the value of totalCost
+	public double getTotalCost()
+	{
+		return (getSubTotal() + getTaxAmt());
+	}//End of getTotalCost
+	
+	//End of Getters
+}// End of Class Order
