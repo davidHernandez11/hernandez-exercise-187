@@ -1,0 +1,73 @@
+//AUTHOR:DavidHernandez
+//COURSE:CPT187
+//PURPOSE:The purpose of WiteOrder is to relay the file name and record counts to the Account Manager
+//CREATEDATE:April 20, 2021
+package edu.cpt187.hernandez.exercise6;
+
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+public class WriteOrder 
+{
+	//Beginning of Attributes
+	
+	private boolean fileFoundFlag;
+	
+	private String masterFileName;
+	
+	private int recordCount;
+	
+	//End of Attributes
+	
+	//Constructor
+	WriteOrder(String borrowedFileName)
+	{
+		masterFileName = borrowedFileName;
+	}//End of Constructor
+	
+	//Setters
+	
+	public void setWriteOrder(int borrowedItemID, String borrowedItemName, double borrowedItemPrice, int borrowedQuantity, double borrowedOrderCost)
+	{
+		//Beginning of Try
+		try
+		{
+			PrintWriter filePW = new PrintWriter (new FileWriter(getFileName(), false));
+			
+			filePW.printf("%1d%1s%1f%1d%1f", borrowedItemID, borrowedItemName, borrowedItemPrice, borrowedQuantity, borrowedOrderCost);
+			
+			filePW.close();
+		}//End of Try
+		
+		//Beginning of Catch
+		catch (IOException ex)
+		{
+			System.out.println("Could not find" + ex);
+		}//End of Catch
+	}//End of setter to assign a new value to setWriteOrder
+		
+	//End of Setters
+	
+	//Getters
+	
+	//Getter to Return the value of fileFoundFlag
+	public boolean getFileFoundFlag()
+	{
+		return fileFoundFlag;
+	}//End of getFileFoundFlag
+	
+	//Getter to Return the value of fileName
+	public String getFileName()
+	{
+		return masterFileName;
+	}//End of getFileName
+	
+	//Getter to Return the value of recordCount
+	public int getRecordCount()
+	{
+		return recordCount;
+	}//End of getRecordCount
+	
+	//End of Getters
+}//End of Class WriteOrder
