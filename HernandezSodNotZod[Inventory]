@@ -47,7 +47,7 @@ public class Inventory
 	//Setter ReduceStock to assign value for borrowed
 	public void setReduceStock(int borrowedHowMany)
 	{
-		itemSearchIndex(inStockCounts - borrowedHowMany);
+		itemSearchIndex = (inStockCounts[1] - borrowedHowMany);
 	}//End of Setter to Assign a new value to setReducStock
 		
 	//Setter LoadItems to assign value for borrowed
@@ -179,9 +179,9 @@ public class Inventory
 	//Getters
 	
 	//Getter to Return the value of inStockCounts
-	public int[] getInStockCounts()
+	public int getInStockCounts()
 	{
-		return inStockCounts;
+		return inStockCounts[1];
 	}//End of getInStockCounts
 	
 	//Getter to Return the value of itemIDs
@@ -335,4 +335,4 @@ public class Inventory
 	}//End of getSearchResults
 	
 	//End of Getters
-}//End of Class Inventory
+}End of Class Inventory
