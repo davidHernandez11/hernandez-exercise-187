@@ -195,7 +195,7 @@ public class Order
 	
 	//Getters
 	
-	public int getInStockCount(int[] borrowedInStockCounts)
+	public int getInStockCount(int borrowedInStockCounts)
 	{
 		return lastItemSelectedIndex = borrowedInStockCounts;
 	}
