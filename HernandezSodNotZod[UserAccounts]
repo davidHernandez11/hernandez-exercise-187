@@ -16,7 +16,7 @@ public class UserAccounts
 	private int RESET_VALUE = 0;
 	private int MAXIMUM_RECORDS = 50;
 	
-	private String[] userNames;
+	private String userNames;
 	private String[] passwords;
 	
 	private String masterFileName;
@@ -42,13 +42,13 @@ public class UserAccounts
 	//Setter SearchIndex to assign value for borrowed
 	public void setSearchIndex(String borrowedUserName)
 	{
-		searchedIndex = getSeqSearch(borrowedUserName);
+		searchedIndex = Integer.parseInt(getSeqSearch(borrowedUserName)) ;
 	}//End of setter to assign a new value to setSearchIndex
 	
 	//Setter SearchIndex to assign value for borrowed
 	public void setSearchedIndex(String borrowedUserName, String borrowedPassword)
 	{
-		searchedIndex = getSeqSearch(borrowedUserName);
+		searchedIndex = Integer.parseInt(getSeqSearch(borrowedUserName));
 		
 		//Test if searchedIndes is >= RESET_VALUE and getPasswordMatch is false
 		if (searchedIndex >= RESET_VALUE && getPasswordMatch(borrowedPassword) == false)
@@ -82,9 +82,9 @@ public class UserAccounts
 	//Getters
 	
 	//Getter to Return the value of seqSearch
-	public int getSeqSearch(String borrowedBorrowedUserName)
+	public String getSeqSearch(String borrowedBorrowedUserName)
 	{
-		return userNames.equalsIgnoreCase(borrowedBorrowedUserName);
+		return userNames = borrowedBorrowedUserName;
 	}//End of getSeqSearch
 	
 	//Getter to Return the value of passwordMatch
@@ -118,3 +118,5 @@ public class UserAccounts
 	}//End of getSearchIndex
 	
 	//End of Getters
+	
+}//End of Class UserAccounts
