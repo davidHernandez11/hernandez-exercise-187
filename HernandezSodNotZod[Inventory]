@@ -171,7 +171,7 @@ public class Inventory
 	
 	public void setSwapArrayElements(int borrowedIndex)
 	{
-		
+		itemSearchIndex = borrowedIndex;
 	}//End of Setter to Assign a new value to setSwapArrayElements
 		
 	//End of Setters
@@ -335,4 +335,4 @@ public class Inventory
 	}//End of getSearchResults
 	
 	//End of Getters
-}End of Class Inventory
+}//End of Class Inventory
